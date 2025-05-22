@@ -1,0 +1,34 @@
+<%= form_with(model: @review, local: true, html: { multipart: true }) do |f| %>
+  <% if @review.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>エラーが発生しました：</h4>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :body, "本文" %>
+    <%= f.text_area :body, class: "form-control", rows: 5 %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :image, "画像（任意）" %>
+    <%= f.file_field :image, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :tag_list, "タグ（カンマ区切り）" %>
+    <%= f.text_field :tag_list, value: @review.tag_list, class: "form-control" %>
+  </div>
+
+  <%= f.submit "保存", class: "btn btn-primary" %>
+<% end %>

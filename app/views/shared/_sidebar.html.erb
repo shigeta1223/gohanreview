@@ -1,0 +1,34 @@
+<%# サイドバー投稿フォーム - shared/_sidebar.html.erb %>
+<div class="col-md-3">
+  <div class="card mb-4">
+    <div class="card-header">
+      新規投稿
+    </div>
+    <div class="card-body">
+      <%= form_with model: Review.new, url: reviews_path, local: true, html: { multipart: true } do |f| %>
+        <div class="mb-2">
+          <%= f.label :title, "タイトル" %>
+          <%= f.text_field :title, class: "form-control", required: true %>
+        </div>
+
+        <div class="mb-2">
+          <%= f.label :body, "本文" %>
+          <%= f.text_area :body, class: "form-control", rows: 3 %>
+        </div>
+
+        <div class="mb-2">
+          <%= f.label :image, "画像" %>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
+
+        <div class="mb-2">
+          <%= f.label :tag_list, "タグ（カンマ区切り）" %>
+          <%= f.text_field :tag_list, class: "form-control" %>
+        </div>
+
+        <%= f.submit "投稿する", class: "btn btn-primary w-100 mt-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

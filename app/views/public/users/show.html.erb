@@ -1,0 +1,18 @@
+<h2><%= @user.name %>のマイページ</h2>
+
+<% if @user == current_user %>
+  <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-secondary me-2" %>
+  <%= link_to "退会する", confirm_user_path(@user), class: "btn btn-danger" %>
+<% end %>
+
+<h3 class="mt-4">投稿一覧</h3>
+<% if @reviews.any? %>
+  <% @reviews.each do |review| %>
+    <div class="border p-2 mb-2">
+      <strong><%= link_to review.title, review_path(review) %></strong><br>
+      <small><%= l(review.created_at, format: :short) %></small>
+    </div>
+  <% end %>
+<% else %>
+  <p>投稿はありません。</p>
+<% end %>

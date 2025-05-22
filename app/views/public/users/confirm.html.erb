@@ -1,0 +1,6 @@
+<h2>退会確認</h2>
+
+<p>退会すると、投稿やコメントなどすべてのデータが削除されます。本当に退会しますか？</p>
+
+<%= button_to "退会する", withdraw_user_path(@user), method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-danger" %>
+<%= link_to "キャンセル", user_path(@user), class: "btn btn-secondary ms-2" %>

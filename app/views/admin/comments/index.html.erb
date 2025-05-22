@@ -1,0 +1,28 @@
+<h2>コメント一覧</h2>
+
+<table class="table table-bordered">
+  <thead class="table-light">
+    <tr>
+      <th>ID</th>
+      <th>内容</th>
+      <th>投稿者</th>
+      <th>レビュー</th>
+      <th>投稿日時</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.id %></td>
+        <td><%= truncate(comment.content, length: 50) %></td>
+        <td><%= comment.user.name %></td>
+        <td><%= link_to comment.review.title, review_path(comment.review) %></td>
+        <td><%= l(comment.created_at, format: :short) %></td>
+        <td>
+          <%= button_to "削除", admin_comment_path(comment), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
