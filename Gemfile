@@ -5,7 +5,7 @@ gem "devise"
 gem "dotenv-rails" # ← ここを追加
 gem "sprockets-rails"
 gem "sqlite3", ">= 1.4"
-gem "puma", "3.11" # ← 修正
+gem "puma", "6.6.0" # ← 修正
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
