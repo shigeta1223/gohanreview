@@ -6,6 +6,7 @@ module Public
     def create
       @comment = @review.comments.build(comment_params)
       @comment.user = current_user
+
       if @comment.save
         redirect_to review_path(@review), notice: "コメントを投稿しました。"
       else
@@ -34,4 +35,3 @@ module Public
     end
   end
 end
-
